@@ -72,7 +72,7 @@ class Database {
     async atualizarHeroi(id, modificacoes) {
         const dados = await this.obterDados();
         const index = dados.findIndex(item => item.id === parseInt(id));
-
+ 
         if (index === -1) {
             throw Error('O herói informado não existe!');
         }

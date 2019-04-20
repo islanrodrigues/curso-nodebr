@@ -1,12 +1,1 @@
-[
-    {
-        "id": 1,
-        "nome": "Black Panther",
-        "poder": "poderes sobre-humanos"
-    },
-    {
-        "id": 2,
-        "nome": "Flash",
-        "poder": "Velocidade"
-    }
-]
+[{"id":1555793099092,"poder":"Energia do Anel","nome":"Lanterna Verde"},{"id":1555792936081,"poder":"Velocidade","nome":"Flash"}]
