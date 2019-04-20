@@ -10,6 +10,7 @@ class Database {
         this.NOME_ARQUIVO = 'herois.json';
     }
     
+
     async listarHeroi(id) {
         const dados = await this.obterDados();
         const dadosFiltrados = dados.filter(item => id ? (item.id === id) : true);
@@ -17,16 +18,19 @@ class Database {
         return dadosFiltrados;
     }   
 
+
     async obterDados() {
         const arquivo = await readFileAsync(this.NOME_ARQUIVO, 'utf8');
        
         return JSON.parse(arquivo.toString());
     }
 
+    
     async escreverArquivo(dados) {
        await writeFileAsync(this.NOME_ARQUIVO, JSON.stringify(dados));
        return true;
     }
+
 
     async cadastrarHeroi(heroi) {
         const dados = await this.obterDados();
@@ -46,6 +50,26 @@ class Database {
 
         return resultado;
     }
+
+    async removerHeroi(id) {
+
+        if (!id) {
+            return await this.escreverArquivo([]);
+        }
+        
+        const dados = await this.obterDados();
+        const index = dados.findIndex(item => item.id === parseInt(id));
+        
+        if (index === -1) {
+            throw Error('O usuário informado não existe!');
+        }
+
+        dados.splice(index, 1);
+
+        return await this.escreverArquivo(dados);
+
+    }
+
 
 } //closing class
 
